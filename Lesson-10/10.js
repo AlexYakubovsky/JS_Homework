@@ -54,16 +54,15 @@ console.log(areAnagrams('кот', 'отко'));
 Задание 5:
 Написать функцию, которая будет разбивать массив на под-массивы определенной длины.
 
-function divideArr (arr, amount) {
+function divideArr(arr, amount) {
     var newArr = [];
 
-    for (i = 0; i < arr.length; i++) {
-        newArr[i] = arr.splice(0, amount);
+    for (i = 0; i < arr.length; i += amount) {
+        newArr.push(arr.slice(i, i + amount));
     };
 
     return newArr;
 };
-
 console.log(divideArr([1, 2, 3, 4], 2));
 console.log(divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3));
 
