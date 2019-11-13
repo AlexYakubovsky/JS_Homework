@@ -2,13 +2,9 @@
 Написать функцию, принимающую массив имен и возвращающую массив объектов вида {name: 'Vasya'}
 
 function transformToObject(arr) {
-    var newArr = arr.map(function(user) {
-        newArr = {};
-        newArr.name = user;
-        return newArr;
+    return arr.map(function(user) {
+        return {name: user};
     });
-
-    return newArr;
 };
 
 console.log( transformToObject( ['Vasya', 'Petya', 'Kolya'] ));
@@ -37,15 +33,15 @@ function findVowels(str) {
     var vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я'];
     var amountVowels = 0;
 
-    var amount = str.toLowerCase().split('').reduce(function(prev, current) {
-         if (vowels.indexOf(current) >= 0) {
-             amountVowels++;
-         }
+    str.toLowerCase().split('').forEach(function(text) {
+        vowels.forEach(function(vowel) {
+            if (text === vowel) {
+                amountVowels++;
+            };
+        });
+    });
 
-         return amountVowels;
-    }, 0);
-
-    return 'Количество гласных: ' + amount;
+    return amountVowels;
 };
 
 console.log( findVowels('Шла Саша по шоссе и сосала сушку!') );
@@ -59,8 +55,7 @@ console.log( findVowels('Шла Саша по шоссе и сосала суш�
 и т.д. - именно букв)
 
 function splitText(str) {
-    var newStr = str.split(/[.?!]/);
-    newStr.pop();
+    var newStr = str.split(/[.?!]\s/);
 
     newStr.forEach(function(item) {
         console.log(item.trim() + '\nКоличество букв - ' + item.split(/[,\s]/).join('').length);
