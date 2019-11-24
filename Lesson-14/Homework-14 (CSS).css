@@ -1,0 +1,13 @@
+.black {
+    background-color: black;
+}
+
+td {
+    padding: 20px;
+}
+
+table {
+    padding-top: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
