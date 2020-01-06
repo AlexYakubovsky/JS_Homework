@@ -1,0 +1,9 @@
+var a = 5;
+var b = 10;
+x = a;
+a = b;
+b = x;
+
+let a = 5;
+let b = 10;
+[a, b] = [b, a];
