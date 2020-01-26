@@ -1,125 +1,63 @@
-// Задание 7:
+// Задание 1:
 {
-    const users = [
-        {name: 'Vasya Pupkin', age: 25},
-        {name: 'Ivan Petrov', age: 30},
-        {name: 'Fedor Ivanov', age: 42}
-    ]
-
-    function sortUsers(arr) {
-        return ({
-            'Пользователи младше 40': usersAge = arr.filter(v => v.age < 40),
-            'Пользователь с именем Федор': usersName = arr.find(v => v.name.startsWith('Fedor'))
-        })
-    }
-
-    sortUsers(users)
+    let {a, b, ...obj} = {a: 1, b: 2, c: 3, d: 4};
 }
 
-
-// Задание 8:
+// Задание 2:
 {
-    const users = ['Vasya', 'Ivan', 'Fevor'];
-
-    function numberUsers(arr) {
-        return arr.map((v,i) => ({[`Пользователь ${++i}`]: v}))
+    let name = prompt(`Введите имя`);
+    const user = {
+        name,
+        sayHi() {
+            return `Hi ${this.name}!`
+        }
     }
-
-    numberUsers(users)
+    user.sayHi()
 }
 
-
-// Задание 9:
+// Задание 3:
 {
-    const user = [
-        {name: 'Vasya'},
-        {name: 'Piotr', age: 25},
-        {salary: '2000$'}
-    ]
-
-    function combineObj(arr) {
-        return arr.reduce((r, v) => Object.assign(r, v), {})
+    function func({a: x, b: y}, z = 1) {
+        return x**y * z;
     }
 
-    combineObj(user)
+    func({a: 2, b: 3})
 }
 
-
-// Задание 10:
+// Задание 4:
 {
-    class Animal {
-        constructor(name) {
-            this.name = name;
-            this._foodAmount = 50;
-        }
+    let arr = [`Alexander`, 23];
 
-        feed() {
-            console.log(`Насыпаем в миску ${this.dailyNorm()} корма.`);
-        }
-
-        _formatFoodAmount() {
-            return `${this._foodAmount} гр`
-        }
-
-        dailyNorm (amount) {
-            if (!arguments.length) return this._formatFoodAmount();
-
-            if (amount < 50 || amount > 500) {
-                throw new Error ('Недопустимое количество корма');
-            }
-
-            this._foodAmount = amount;
-        }
+    function func(name, age) {
+        return (`Hello, I'm ${name} and I'm ${age} years old.`)
     }
 
-    class Cat extends Animal {
-        constructor(name) {
-            super(name);
-        }
-
-        feed() {
-            super.feed();
-            console.log('Кот доволен ^_^');
-            return this;
-        }
-
-        stroke() {
-            console.log('Гладим кота.');
-            return this;
-        }
-
-    }
-
-    let markiz = new Cat('Маркиз');
-    markiz.stroke().stroke().feed().feed();
+    func(...arr);
 }
 
-
-// Задание 11:
+// Задание 5:
 {
-    function showNumbersInRange (num1, num2) {
-        return new Promise((resolve, reject) => {
-            if ((wholeNum1 = Math.round(num1)) && (wholeNum2 = Math.round(num2))) {
-                let timerId = setInterval(() => {
-                    if (wholeNum1 === wholeNum2) {
-                        clearInterval(timerId);
-                        resolve(wholeNum2);
-                    }
-
-                    if (wholeNum1 < wholeNum2) {
-                        console.log(wholeNum1++);
-                    } else {
-                        console.log(wholeNum1--);
-                    }
-                }, 1000);
-            } else {
-                reject('Введите корректное число');
-            }
-
-        })
+    function func(...arr) {
+        for (let value of arr){
+            console.log(value)
+        }
     }
 
-    showNumbersInRange(8, 11)
-        .then(result => console.log(`последнее запомненное число: ${result}`))
-        .catch(error => console.log(`Возникла ошибка: ${error}`))
+    func(1, 2, 3, 4, 5);
+}
+
+//     Задание 6:
+{
+    function countVowelLetters(text) {
+        text = text.toLowerCase().split('');
+
+        let counter = 0;
+        const vowelLetters = ['а', 'я', 'ы', 'и', 'о', 'ё', 'у', 'ю', 'э', 'е', 'a', 'e', 'i', 'o', 'u', 'y'];
+
+        text.forEach(value => vowelLetters.includes(value) && counter++);
+
+        return counter;
+    }
+
+    countVowelLetters('Шла Саша по шоссе И сосала сУшку'); // 12
 }
